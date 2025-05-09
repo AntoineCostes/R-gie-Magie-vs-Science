@@ -67,23 +67,73 @@
         "On/off":
         {
           "type":"Boolean",
-          "default":0
+          "default":1
         }
       }
     },
-    "FIRE":
+    "Relais 5V":
     {
-      "callback":"setFire",
+      "callback":"setRelay",
+      "parameters":
+      {
+        "index":
+        {
+          "type":"Integer",
+          "default":0,
+          "min":0,
+          "max":3
+        },
+        "value":
+        {
+          "type":"Boolean",
+          "default":1
+        }
+      }
+    },
+    "Arc":
+    {
+      "callback":"setArc",
       "parameters":
       {
         "On/off":
         {
           "type":"Boolean",
-          "default":0
+          "default":1
         }
       }
     },
-    "Electrovannes":
+    "Propane":
+    {
+      "callback":"setPropane",
+      "parameters":
+      {
+        "On/off":
+        {
+          "type":"Boolean",
+          "default":1
+        }
+      }
+    },
+    "Electrovalve":
+    {
+      "callback":"setValve",
+      "parameters":
+      {
+        "index":
+        {
+          "type":"Integer",
+          "default":0,
+          "min":1,
+          "max":4
+        },
+        "value":
+        {
+          "type":"Boolean",
+          "default":1
+        }
+      }
+    },
+    "Electrovalves":
     {
       "callback":"setValves",
       "parameters":
@@ -107,21 +157,49 @@
         {
           "type":"Boolean",
           "default":0
-        },
-        "5":
+        }
+      }
+    },
+    "Pompe 1":
+    {
+      "callback":"setPump1",
+      "parameters":
+      {
+        "On/off":
         {
           "type":"Boolean",
-          "default":0
-        },
-        "6":
+          "default":1
+        }
+      }
+    },
+    "Pompe 2":
+    {
+      "callback":"setPump2",
+      "parameters":
+      {
+        "On/off":
         {
           "type":"Boolean",
-          "default":0
+          "default":1
+        }
+      }
+    },
+    "Relais 12V":
+    {
+      "callback":"setRelay",
+      "parameters":
+      {
+        "index":
+        {
+          "type":"Integer",
+          "default":0,
+          "min":4,
+          "max":11
         },
-        "7":
+        "value":
         {
           "type":"Boolean",
-          "default":0
+          "default":1
         }
       }
     }

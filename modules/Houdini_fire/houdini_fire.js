@@ -35,39 +35,54 @@ function oscEvent(address, args)
 
 }
 
+// COMMANDS
 function setUV(value)
 {
-  retRelay(0, value);
+  setRelay(0, value);
 }
 
 function set5V(one, two, three)
 {
-  retRelay(0, one);
-  retRelay(1, two);
-  retRelay(2, three);
-  retRelay(3, four);
+  setRelay(0, one);
+  setRelay(1, two);
+  setRelay(2, three);
+  setRelay(3, four);
 }
 
-
-function setFire(value)
+function setArc(value)
 {
-  retRelay(4, value);
+  setRelay(4, value);
 }
 
-
-function setValves(one, two, three, four, five, six, seven)
+function setPropane(value)
 {
-  retRelay(5, one);
-  retRelay(6, two);
-  retRelay(7, three);
-  retRelay(8, four);
-  retRelay(9, five);
-  retRelay(10, six);
-  retRelay(11, seven);
+  setRelay(5, value);
+} 
+
+function setValves(one, two, three, four)
+{
+  setRelay(6, one);
+  setRelay(7, two);
+  setRelay(8, three);
+  setRelay(9, four);
 }
 
-function retRelay(index, val)
+function setValve(index, value)
+{
+  setRelay(index+5, value);
+}
+
+function setPump1(value)
+{
+  setRelay(10, value);
+}
+
+function setPump2(value)
+{
+  setRelay(11, value);
+}
+
+function setRelay(index, val)
 {
   local.send("/gpio/dout", index, val);
-
 }

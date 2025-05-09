@@ -36,50 +36,46 @@ function oscEvent(address, args)
 }
 
 // COMMANDS
-function setLeftServo(val){
-  setServo(0, val);
-}
-
-function setRightServo(val){
-  setServo(1, val);
-}
-
 function setServo(index, val) {
   script.log("Set servo " + val);
-  local.send("/servo/set", index, val*0.5+0.5);
+  if (index == 2) // all
+  {
+    local.send("/servo/set", 0, val*0.5+0.5);
+    local.send("/servo/set", 1, val*0.5+0.5);
+  } else
+    local.send("/servo/set", index, val*0.5+0.5);
 }
 
-function setNeon(mode, color, param)
+function setLeds(strip, mode, color, param)
 {
-  setLed(0, mode, color, param);
-}
-
-function setFace(mode, color, param)
-{
-  setLed(1, mode, color, param);
-}
-
-function setBaie(mode, color, param)
-{
-  setLed(2, mode, color, param);
+  if (strip == 3) // all
+  {
+    setLed(0, mode, color, param);
+    setLed(1, mode, color, param);
+    setLed(2, mode, color, param);
+  } else
+    setLed(strip, mode, color, param);
 }
 
 function setLed(index, mode, color, param)
 {
+  script.log("Set led " + index);
   local.send("/ledstrip/set", index, mode, parseFloat(color[0]), color[1], color[2], param);
-
 }
 
-function setRelays(one, two, three, four)
+function setRelays(red, yellow, green)
 {
-  retRelay(0, one);
-  retRelay(1, two);
-  retRelay(2, three);
-  retRelay(3, four);
+  retRelay(0, green);
+  retRelay(1, yellow);
+  retRelay(2, red);
+}
+
+function setBall(value)
+{
+  retRelay(3, value);
 }
 
 function retRelay(index, val)
 {
   local.send("/gpio/dout", index, val);
-
 }
