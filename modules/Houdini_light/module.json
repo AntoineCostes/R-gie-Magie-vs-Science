@@ -1,0 +1,193 @@
+{
+  "name":"Houdini_light",
+  "type":"OSC",
+  "path":"Les Incompressibles",
+
+  "version":"1.0",
+  "description":"Contrôle d'une machine à café par OSC",
+
+
+  "hasInput":true,
+  "hasOutput":true,
+
+  "hideDefaultCommands":false,
+
+  "defaults":
+  {
+    "autoAdd":false,
+    "OSC Input":
+    {
+      "localPort":12345
+    },
+
+		"OSC Outputs":
+		{
+			"OSC Output":
+      {
+        "local":false,
+        "remoteHost":"Houdini_light.local",
+        "remotePort":12345
+      }
+    }
+  },
+
+  "parameters":
+  {
+    "Ping":
+    {
+      "type":"Trigger",
+      "readOnly":true
+    },
+    "IP":
+    {
+      "type":"String",
+      "default":"",
+      "readOnly":true
+    }
+  },
+
+  "hideDefaultParameters": ["useHierarchy",  "autoFeedback", "autoAdd", "colorSendMode", "booleanSendMode", "clearValues", "pass_through", "oscInput/local", "oscOutputs/oscOutput/local", "oscOutputs/oscOutput/remotePort", "oscOutputs/oscOutput/listenToFeedback"],
+
+  "scripts":
+  [
+    "houdini_light.js"
+  ],
+
+  "values":
+  {
+  },
+
+  "commands":
+  {
+    "Sourcil gauche":
+    {
+      "menu":"Moteurs",
+      "callback":"setLeftServo",
+      "parameters":
+      {
+        "Position":
+        {
+          "type":"Float",
+          "min":-1,
+          "max":1,
+          "default":0
+        }
+      }
+    },
+    "Sourcil droit":
+    {
+      "menu":"Moteurs",
+      "callback":"setRightServo",
+      "parameters":
+      {
+        "Position":
+        {
+          "type":"Float",
+          "min":-1,
+          "max":1,
+          "default":0
+        }
+      }
+    },
+    "Néon":
+    {
+      "menu":"Lumières",
+      "callback":"setNeon",
+      "parameters":
+      {
+        "Mode":
+        {
+          "type":"Enum",
+          "options":{"solid":0, "blink":1, "glow":2, "chase":3, "rainbow":4, "random":5}
+        },
+        "Couleur":
+        {
+          "type":"Color",
+          "default":"{1, 0, 0, 1}"
+        },
+        "Paramètre":
+        {
+          "type":"Float",
+          "min":0,
+          "max":1,
+          "default":1
+        }
+      }
+    },
+    "Face":
+    {
+      "menu":"Lumières",
+      "callback":"setFace",
+      "parameters":
+      {
+        "Mode":
+        {
+          "type":"Enum",
+          "options":{"solid":0, "blink":1, "glow":2, "chase":3, "rainbow":4, "random":5}
+        },
+        "Couleur":
+        {
+          "type":"Color"
+        },
+        "Paramètre":
+        {
+          "type":"Float",
+          "min":0,
+          "max":1,
+          "default":1
+        }
+      }
+    },
+    "Baie":
+    {
+      "menu":"Lumières",
+      "callback":"setBaie",
+      "parameters":
+      {
+        "Mode":
+        {
+          "type":"Enum",
+          "options":{"solid":0, "blink":1, "glow":2, "chase":3, "rainbow":4, "random":5}
+        },
+        "Couleur":
+        {
+          "type":"Color"
+        },
+        "Paramètre":
+        {
+          "type":"Float",
+          "min":0,
+          "max":1,
+          "default":1
+        }
+      }
+    },
+    "Relais":
+    {
+      "callback":"setRelays",
+      "parameters":
+      {
+        "Vert":
+        {
+          "type":"Boolean",
+          "default":0
+        },
+        "Jaune":
+        {
+          "type":"Boolean",
+          "default":0
+        },
+        "Rouge":
+        {
+          "type":"Boolean",
+          "default":0
+        },
+        "Boule":
+        {
+          "type":"Boolean",
+          "default":0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "name":"Houdini_fire",
+  "type":"OSC",
+  "path":"Les Incompressibles",
+
+  "version":"1.0",
+  "description":"Contrôle d'une machine à café par OSC",
+
+
+  "hasInput":true,
+  "hasOutput":true,
+
+  "hideDefaultCommands":false,
+
+  "defaults":
+  {
+    "autoAdd":false,
+    "OSC Input":
+    {
+      "localPort":12346
+    },
+
+		"OSC Outputs":
+		{
+			"OSC Output":
+      {
+        "local":false,
+        "remoteHost":"Houdini_fire.local",
+        "remotePort":12345
+      }
+    }
+  },
+
+  "parameters":
+  {
+    "Ping":
+    {
+      "type":"Trigger",
+      "readOnly":true
+    },
+    "IP":
+    {
+      "type":"String",
+      "default":"",
+      "readOnly":true
+    }
+  },
+
+  "hideDefaultParameters": ["useHierarchy",  "autoFeedback", "autoAdd", "colorSendMode", "booleanSendMode", "clearValues", "pass_through", "oscInput/local", "oscOutputs/oscOutput/local", "oscOutputs/oscOutput/remotePort", "oscOutputs/oscOutput/listenToFeedback"],
+
+  "scripts":
+  [
+    "houdini_fire.js"
+  ],
+
+  "values":
+  {
+  },
+
+  "commands":
+  {
+    "UV":
+    {
+      "callback":"setUV",
+      "parameters":
+      {
+        "On/off":
+        {
+          "type":"Boolean",
+          "default":0
+        }
+      }
+    },
+    "FIRE":
+    {
+      "callback":"setFire",
+      "parameters":
+      {
+        "On/off":
+        {
+          "type":"Boolean",
+          "default":0
+        }
+      }
+    },
+    "Electrovannes":
+    {
+      "callback":"setValves",
+      "parameters":
+      {
+        "1":
+        {
+          "type":"Boolean",
+          "default":0
+        },
+        "2":
+        {
+          "type":"Boolean",
+          "default":0
+        },
+        "3":
+        {
+          "type":"Boolean",
+          "default":0
+        },
+        "4":
+        {
+          "type":"Boolean",
+          "default":0
+        },
+        "5":
+        {
+          "type":"Boolean",
+          "default":0
+        },
+        "6":
+        {
+          "type":"Boolean",
+          "default":0
+        },
+        "7":
+        {
+          "type":"Boolean",
+          "default":0
+        }
+      }
+    }
+  }
+}
